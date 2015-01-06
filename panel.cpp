@@ -620,7 +620,10 @@ bool Panel::OnKeyPress(XEvent& event) {
 						formerString=HiddenPasswdBuffer;
 						if (PasswdBuffer.length() < INPUT_MAXLENGTH_PASSWD-1){
 							PasswdBuffer.append(&ascii,1);
-							HiddenPasswdBuffer.append("*");
+
+							string symbol_pool = "!@#$%&*?";
+							int index = rand() % symbol_pool.length();
+							HiddenPasswdBuffer.append(symbol_pool, index, 1);
 						};
 					break;
 				};
