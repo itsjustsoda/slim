@@ -663,6 +663,8 @@ bool Panel::OnKeyPress(XEvent& event) {
 						formerString.length(), &extents);
 		int maxLength = extents.width;
 
+		xx -= maxLength / (double) 2;
+
 		if (mode == Mode_Lock)
 			ApplyBackground(Rectangle(input_pass_x - 3,
 				input_pass_y - maxHeight - 3,
