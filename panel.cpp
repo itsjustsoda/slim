@@ -412,7 +412,7 @@ void Panel::Cursor(int visible) {
 	cheight = extents.height;
 	y2 = yy - extents.y + extents.height;
 	XftTextExtents8(Dpy, font, (XftChar8*)text, strlen(text), &extents);
-	xx += extents.width;
+	xx += extents.width / (double) 2;
 
 	if(visible == SHOW) {
 		if (mode == Mode_Lock) {
@@ -724,7 +724,7 @@ void Panel::ShowText(){
 		cfgY = cfg->getOption("password_y");
 		int shadowXOffset = cfg->getIntOption("username_shadow_xoffset");
 		int shadowYOffset = cfg->getIntOption("username_shadow_yoffset");
-		password_x = Cfg::absolutepos(cfgX, image->Width(), extents.width);
+		password_x = Cfg::absolutepos(cfgX, image->Width(), extents.width) - extents.width / (double) 2;
 		password_y = Cfg::absolutepos(cfgY, image->Height(), extents.height);
 		if (password_x >= 0 && password_y >= 0){
 			SlimDrawString8 (draw, &entercolor, enterfont, password_x, password_y,
@@ -740,7 +740,7 @@ void Panel::ShowText(){
 		cfgY = cfg->getOption("username_y");
 		int shadowXOffset = cfg->getIntOption("username_shadow_xoffset");
 		int shadowYOffset = cfg->getIntOption("username_shadow_yoffset");
-		username_x = Cfg::absolutepos(cfgX, image->Width(), extents.width);
+		username_x = Cfg::absolutepos(cfgX, image->Width(), extents.width) - extents.width / (double) 2;
 		username_y = Cfg::absolutepos(cfgY, image->Height(), extents.height);
 		if (username_x >= 0 && username_y >= 0){
 			SlimDrawString8 (draw, &entercolor, enterfont, username_x, username_y,
